@@ -9,7 +9,7 @@
 // 'yoooo'
 
 var drops = [];
-
+var paused = false;
 function setup() {
   createCanvas(640, 360);
   for (var i = 0; i < 500; i++) {
@@ -18,9 +18,20 @@ function setup() {
 }
 
 function draw() {
-  background(230, 230, 250);
-  for (var i = 0; i < drops.length; i++) {
-    drops[i].fall();
-    drops[i].show();
+  if (paused) {
+    // Do paused stuff
+  } else {
+    // Do normal stuff
+    background(230, 230, 250);
+    for (var i = 0; i < drops.length; i++) {
+      drops[i].fall();
+      drops[i].show();
+    }
+  }
+}
+
+function keyPressed() {
+  if (key === 'p') {
+    paused = true;
   }
 }
